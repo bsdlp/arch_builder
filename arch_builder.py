@@ -5,16 +5,17 @@ from getpass import getpass
 
 username = ''
 password = ''
-two_fa = ''
 
 while not username:
     username = input('GitHub Username: ')
 
 while not password:
-    password = getpass('Password for {0}: '.format(user))
+    password = getpass('Password for {0}: '.format(username))
 
 def _two_fa_input():
+    two_fa = ''
     while not two_fa:
         two_fa = input('Two Factor Code: ')
+    return two_fa
 
-gh_login = login(username=username, password=password, two_factor_callback=two_fa_input)
+g = login(username=username, password=password, two_factor_callback=_two_fa_input)
